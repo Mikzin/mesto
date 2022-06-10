@@ -1,0 +1,10 @@
+.button-like {
+  background-image: url(../../../images/button_like2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  width: 26px;
+  height: 19px;
+  border: 0;
+  margin-left: 25px;
+}

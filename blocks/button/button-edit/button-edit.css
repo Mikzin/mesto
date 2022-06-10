@@ -1,0 +1,16 @@
+.button-edit {
+  background-image: url(../../../images/button_edit.png);
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #fff;
+  margin: 7px 0 0 18px;
+  cursor: pointer;
+  transition: opacity ease-in 0.3s;
+}
+
+.button-edit:hover {
+  opacity: 0.6;
+}

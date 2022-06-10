@@ -15,13 +15,105 @@
 
   <body class="root">
     <div class="page">
-      <header class="header"></header>
+      <header class="header">
+        <img src="./images/logo.svg" class="mesto_logo" alt="логотип Место" />
+      </header>
 
-      <main class="content"></main>
+      <main class="content">
+        <section class="profile">
+          <div class="profile__info">
+            <img src="./images/kusto.jpg" alt="Кусто" class="profile__avatar" />
+            <div class="profile__subinfo">
+              <div class="profile__header">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="button-edit"></button>
+              </div>
+              <p class="profile__description">Исследователь океана</p>
+            </div>
+          </div>
+          <button class="button-add"></button>
+        </section>
+
+        <section class="elements">
+          <div class="elements__card">
+            <img
+              src="./images/angels.jpg"
+              class="elements__card-image"
+              alt="Ангелы на шпиле"
+            />
+            <div class="elements__card-info">
+              <h2 class="elements__card-heading">Ангелы</h2>
+              <button class="button-like"></button>
+            </div>
+          </div>
+
+          <div class="elements__card">
+            <img
+              src="./images/isaac.jpg"
+              class="elements__card-image"
+              alt="Исаакиевский Собор"
+            />
+            <div class="elements__card-info">
+              <h2 class="elements__card-heading">Исаакиевский Собор</h2>
+              <button class="button-like"></button>
+            </div>
+          </div>
+
+          <div class="elements__card">
+            <img
+              src="./images/kazan.jpg"
+              class="elements__card-image"
+              alt="Казанский собор"
+            />
+            <div class="elements__card-info">
+              <h2 class="elements__card-heading">Казанский собор</h2>
+              <button class="button-like"></button>
+            </div>
+          </div>
+
+          <div class="elements__card">
+            <img
+              src="./images/lakhta.jpg"
+              class="elements__card-image"
+              alt="Лахта Центр"
+            />
+            <div class="elements__card-info">
+              <h2 class="elements__card-heading">Лахта Центр</h2>
+              <button class="button-like"></button>
+            </div>
+          </div>
+
+          <div class="elements__card">
+            <img
+              src="./images/vantovii.jpg"
+              class="elements__card-image"
+              alt="Вантовый мост"
+            />
+            <div class="elements__card-info">
+              <h2 class="elements__card-heading">Вантовый мост</h2>
+              <button class="button-like"></button>
+            </div>
+          </div>
+
+          <div class="elements__card">
+            <img
+              src="./images/vitebskii.jpg"
+              class="elements__card-image"
+              alt="Витебский вокзал"
+            />
+            <div class="elements__card-info">
+              <h2 class="elements__card-heading">Витебский вокзал</h2>
+              <button class="button-like"></button>
+            </div>
+          </div>
+        </section>
+      </main>
 
       <footer class="footer">
         <p class="footer__copyright">© 2022. Mesto Russia</p>
       </footer>
     </div>
+
+    <script src="./scripts/script.js"></script>
   </body>
 </html>

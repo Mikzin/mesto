@@ -1,3 +1,25 @@
 @import url(../vendor/normalize.css);
 
 @import url(../fonts/inter.css);
+
+@import url(../blocks/root/root.css);
+
+@import url(../blocks/header/header.css);
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__header/profile__header.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__subinfo/profile__subinfo.css);
+@import url(../blocks/profile/__description/profile__description.css);
+
+@import url(../blocks/button/button-add/button-add.css);
+@import url(../blocks/button/button-edit/button-edit.css);
+@import url(../blocks/button/button-like/button-like.css);
+
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__card-heading/elements__card-heading.css);
+@import url(../blocks/elements/__card-image/elements__card-image.css);
+@import url(../blocks/elements/__card-info/elements__card-info.css);
+@import url(../blocks/elements/__card/elements__card.css);
