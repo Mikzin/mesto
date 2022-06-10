@@ -23,3 +23,6 @@
 @import url(../blocks/elements/__card-image/elements__card-image.css);
 @import url(../blocks/elements/__card-info/elements__card-info.css);
 @import url(../blocks/elements/__card/elements__card.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
