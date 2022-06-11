@@ -11,3 +11,4 @@
 - JavaScript (получение элементов из Dom-дерева, манипуляции с классами, управление содержимым страницы)
 
 Ссылка на GitHub Pages:
+https://mikzin.github.io/mesto/index.html
