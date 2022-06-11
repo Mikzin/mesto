@@ -1,5 +1,5 @@
 .button-like {
-  background-image: url(../../../images/button_like2.png);
+  background-image: url(../../../images/button_like.png);
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fff;
@@ -7,4 +7,16 @@
   height: 19px;
   border: 0;
   margin-left: 25px;
+  cursor: pointer;
+  transition: opacity ease-in 0.3s;
+  border-radius: 2px;
+}
+
+.button-like:hover {
+  opacity: 0.6;
+}
+
+.button-like:active {
+  background-image: url(../../../images/button_like-active.png);
+  opacity: 1;
 }
