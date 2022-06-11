@@ -10,8 +10,17 @@
   right: -40px;
   cursor: pointer;
   transition: opacity ease-in 0.3s;
+  background-position: center;
 }
 
 .button-close:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width: 580px) {
+  .button-close {
+    width: 20px;
+    height: 20px;
+    right: 0;
+  }
 }

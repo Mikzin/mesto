@@ -10,3 +10,9 @@
   line-height: 17px;
   color: #000000;
 }
+
+@media screen and (max-width: 580px) {
+  .popup__name {
+    width: 238px;
+  }
+}
