@@ -12,14 +12,18 @@
   cursor: pointer;
   transition: opacity ease-in 0.3s;
   border-radius: 2px;
+  margin-bottom: 37px;
 }
 
 .button-save:hover {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 580px) {
   .button-save {
     width: 238px;
+    margin-bottom: 37px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

@@ -3,29 +3,29 @@ const closeBtn = document.querySelector('.button-close');
 const popupModal = document.querySelector('.popup');
 
 function openModal() {
-  popupModal.classList.add('popup__opened');
+  nameInput.value = newName.textContent;
+  jobInput.value = newJob.textContent;
+  popupModal.classList.add('popup_opened');
 }
 
 function closeModal() {
-  popupModal.classList.remove('popup__opened');
+  popupModal.classList.remove('popup_opened');
 }
 
 editBtn.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
 
 let formElement = document.querySelector('.popup__container');
-let nameInput = formElement.querySelector('.popup__name');
-let jobInput = formElement.querySelector('.popup__description');
+let nameInput = formElement.querySelector('#name');
+let jobInput = formElement.querySelector('#description');
+let newName = document.querySelector('.profile__name');
+let newJob = document.querySelector('.profile__description');
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
-  let nameValue = nameInput.value;
-  let jobValue = jobInput.value;
-  let newName = document.querySelector('.profile__name');
-  let newJob = document.querySelector('.profile__description');
-  newName.textContent = nameValue;
-  newJob.textContent = jobValue;
+  newName.textContent = nameInput.value;
+  newJob.textContent = jobInput.value;
 
   closeModal();
 }

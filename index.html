@@ -26,7 +26,7 @@
             <div class="profile__subinfo">
               <div class="profile__header">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="button-edit"></button>
+                <button class="button-edit" type="button"></button>
               </div>
               <p class="profile__description">Исследователь океана</p>
             </div>
@@ -35,7 +35,7 @@
         </section>
 
         <section class="elements">
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/angels.jpg"
               class="elements__card-image"
@@ -45,9 +45,9 @@
               <h2 class="elements__card-heading">Ангелы</h2>
               <button class="button-like"></button>
             </div>
-          </div>
+          </article>
 
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/isaac.jpg"
               class="elements__card-image"
@@ -57,9 +57,9 @@
               <h2 class="elements__card-heading">Исаакиевский Собор</h2>
               <button class="button-like"></button>
             </div>
-          </div>
+          </article>
 
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/kazan.jpg"
               class="elements__card-image"
@@ -69,9 +69,9 @@
               <h2 class="elements__card-heading">Казанский собор</h2>
               <button class="button-like"></button>
             </div>
-          </div>
+          </article>
 
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/lakhta.jpg"
               class="elements__card-image"
@@ -81,9 +81,9 @@
               <h2 class="elements__card-heading">Лахта Центр</h2>
               <button class="button-like"></button>
             </div>
-          </div>
+          </article>
 
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/vantovii.jpg"
               class="elements__card-image"
@@ -93,9 +93,9 @@
               <h2 class="elements__card-heading">Вантовый мост</h2>
               <button class="button-like"></button>
             </div>
-          </div>
+          </article>
 
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/vitebskii.jpg"
               class="elements__card-image"
@@ -105,7 +105,7 @@
               <h2 class="elements__card-heading">Витебский вокзал</h2>
               <button class="button-like"></button>
             </div>
-          </div>
+          </article>
         </section>
       </main>
 
@@ -115,29 +115,29 @@
     </div>
 
     <div class="popup">
-      <form class="popup__container">
+      <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <div class="popup__form">
+        <form class="popup__form" name="editform" method="POST">
           <input
-            class="popup__name"
+            class="popup__input"
             id="name"
             type="text"
             name="firstname"
-            value="Жак-Ив Кусто"
+            value=""
             placeholder="Имя"
           />
           <input
-            class="popup__description"
+            class="popup__input"
             id="description"
             type="text"
-            name="firstname"
-            value="Исследователь океана"
+            name="description"
+            value=""
             placeholder="Описание"
           />
-          <button class="button-save">Сохранить</button>
-        </div>
+          <button class="button-save" type="submit">Сохранить</button>
+        </form>
         <button class="button-close"></button>
-      </form>
+      </div>
     </div>
     <script src="./scripts/script.js"></script>
   </body>

@@ -1,4 +1,4 @@
-.popup__name {
+.popup__input {
   width: 358px;
   height: 27px;
   border: 0;
@@ -11,8 +11,19 @@
   color: #000000;
 }
 
+.popup__input:last-of-type {
+  margin: 0 0 48px;
+}
+
 @media screen and (max-width: 580px) {
-  .popup__name {
+  .popup__input:last-child {
+    width: 238px;
+    margin: 0 0 45px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .popup__input {
     width: 238px;
   }
 }

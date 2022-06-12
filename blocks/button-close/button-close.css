@@ -11,6 +11,7 @@
   cursor: pointer;
   transition: opacity ease-in 0.3s;
   background-position: center;
+  background-size: contain;
 }
 
 .button-close:hover {
