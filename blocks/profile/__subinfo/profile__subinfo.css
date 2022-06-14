@@ -1,3 +1,9 @@
 .profile__subinfo {
   max-width: 336px;
 }
+
+@media screen and (max-width: 580px) {
+  .profile__subinfo {
+    max-width: 282px;
+  }
+}
