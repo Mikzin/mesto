@@ -1,20 +1,23 @@
 const editBtn = document.querySelector('.button-edit');
 const closeBtn = document.querySelector('.button-close');
+const addBtn = document.querySelector('.button-add');
 const popupModal = document.querySelector('.popup');
-let formElement = document.querySelector('.popup__container');
-let nameInput = formElement.querySelector('#name');
-let jobInput = formElement.querySelector('#description');
-let newName = document.querySelector('.profile__name');
-let newJob = document.querySelector('.profile__description');
+const popupModalCard = document.querySelector('.popup-newitem');
+const formElement = document.querySelector('.popup__container');
+const nameInput = formElement.querySelector('#name');
+const jobInput = formElement.querySelector('#description');
+const newName = document.querySelector('.profile__name');
+const newJob = document.querySelector('.profile__description');
+const closeBtnItem = document.querySelector('#item-close');
 
-function openModal() {
+function togglePopup() {
   nameInput.value = newName.textContent;
   jobInput.value = newJob.textContent;
-  popupModal.classList.add('popup_opened');
+  popupModal.classList.toggle('popup_opened');
 }
 
-function closeModal() {
-  popupModal.classList.remove('popup_opened');
+function togglePopupItem() {
+  popupModalCard.classList.toggle('popup_opened');
 }
 
 function formSubmitHandler(evt) {
@@ -23,9 +26,11 @@ function formSubmitHandler(evt) {
   newName.textContent = nameInput.value;
   newJob.textContent = jobInput.value;
 
-  closeModal();
+  togglePopup();
 }
 
-editBtn.addEventListener('click', openModal);
-closeBtn.addEventListener('click', closeModal);
+editBtn.addEventListener('click', togglePopup);
+closeBtn.addEventListener('click', togglePopup);
+addBtn.addEventListener('click', togglePopupItem);
+closeBtnItem.addEventListener('click', togglePopupItem);
 formElement.addEventListener('submit', formSubmitHandler);

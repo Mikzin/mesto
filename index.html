@@ -137,6 +137,33 @@
         <button class="button-close" type="button"></button>
       </div>
     </div>
+
+    <div class="popup popup-newitem">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form" name="editform" method="POST">
+          <input
+            class="popup__input"
+            id="place"
+            type="text"
+            name="placename"
+            value=""
+            placeholder="Название"
+          />
+          <input
+            class="popup__input"
+            id="link"
+            type="text"
+            name="imagelink"
+            value=""
+            placeholder="Ссылка на картинку"
+          />
+          <button class="button-save" type="submit">Создать</button>
+        </form>
+        <button class="button-close" type="button" id="item-close"></button>
+      </div>
+    </div>
+
     <script src="./scripts/script.js"></script>
   </body>
 </html>
