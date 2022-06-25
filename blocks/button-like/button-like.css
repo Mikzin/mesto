@@ -1,5 +1,5 @@
 .button-like {
-  background-image: url(../../images/button_like.png);
+  background-image: url(../../images/button_like.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fff;
@@ -14,9 +14,4 @@
 
 .button-like:hover {
   opacity: 0.5;
-}
-
-.button-like:active {
-  background-image: url(../../images/button_like-active.png);
-  opacity: 1;
 }

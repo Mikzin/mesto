@@ -33,86 +33,14 @@
         <button class="button-add" type="button"></button>
       </section>
 
-      <section class="elements">
-        <article class="elements__card">
-          <img
-            src="./images/angels.jpg"
-            class="elements__card-image"
-            alt="Ангелы на шпиле"
-          />
-          <div class="elements__card-info">
-            <h2 class="elements__card-heading">Ангелы</h2>
-            <button class="button-like" type="button"></button>
-          </div>
-        </article>
-
-        <article class="elements__card">
-          <img
-            src="./images/isaac.jpg"
-            class="elements__card-image"
-            alt="Исаакиевский Собор"
-          />
-          <div class="elements__card-info">
-            <h2 class="elements__card-heading">Исаакиевский Собор</h2>
-            <button class="button-like" type="button"></button>
-          </div>
-        </article>
-
-        <article class="elements__card">
-          <img
-            src="./images/kazan.jpg"
-            class="elements__card-image"
-            alt="Казанский собор"
-          />
-          <div class="elements__card-info">
-            <h2 class="elements__card-heading">Казанский собор</h2>
-            <button class="button-like" type="button"></button>
-          </div>
-        </article>
-
-        <article class="elements__card">
-          <img
-            src="./images/lakhta.jpg"
-            class="elements__card-image"
-            alt="Лахта Центр"
-          />
-          <div class="elements__card-info">
-            <h2 class="elements__card-heading">Лахта Центр</h2>
-            <button class="button-like" type="button"></button>
-          </div>
-        </article>
-
-        <article class="elements__card">
-          <img
-            src="./images/vantovii.jpg"
-            class="elements__card-image"
-            alt="Вантовый мост"
-          />
-          <div class="elements__card-info">
-            <h2 class="elements__card-heading">Вантовый мост</h2>
-            <button class="button-like" type="button"></button>
-          </div>
-        </article>
-
-        <article class="elements__card">
-          <img
-            src="./images/vitebskii.jpg"
-            class="elements__card-image"
-            alt="Витебский вокзал"
-          />
-          <div class="elements__card-info">
-            <h2 class="elements__card-heading">Витебский вокзал</h2>
-            <button class="button-like" type="button"></button>
-          </div>
-        </article>
-      </section>
+      <section class="elements"></section>
     </main>
 
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup-edit">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="editform" method="POST">
@@ -158,11 +86,32 @@
             value=""
             placeholder="Ссылка на картинку"
           />
-          <button class="button-save" type="submit">Создать</button>
+          <button class="button-save" type="submit" id="button-save-item">
+            Создать
+          </button>
         </form>
         <button class="button-close" type="button" id="item-close"></button>
       </div>
     </div>
+
+    <div class="popup popup-image">
+      <div class="popup-image__container">
+        <img src="" class="popup-image__img" />
+        <p class="popup-image__description"></p>
+        <button class="button-close" type="button" id="image-close"></button>
+      </div>
+    </div>
+
+    <template id="card-template">
+      <article class="elements__card">
+        <img src="" class="elements__card-image" alt="" />
+        <div class="elements__card-info">
+          <h2 class="elements__card-heading"></h2>
+          <button class="button-like" type="button"></button>
+        </div>
+        <button class="button-delete" type="button"></button>
+      </article>
+    </template>
 
     <script src="./scripts/script.js"></script>
   </body>
