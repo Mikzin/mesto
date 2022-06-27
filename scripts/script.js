@@ -2,32 +2,26 @@ const initialCards = [
   {
     name: 'Ангелы',
     link: './images/angels.jpg',
-    alt: 'Статуя Ангелов',
   },
   {
     name: 'Исаакиевский Собор',
     link: './images/isaac.jpg',
-    alt: 'Исаакиевский Собор',
   },
   {
     name: 'Казанский собор',
     link: './images/kazan.jpg',
-    alt: 'Казанский собор',
   },
   {
     name: 'Лахта Центр',
     link: './images/lakhta.jpg',
-    alt: 'Лахта Центр',
   },
   {
     name: 'Вантовый мост',
     link: './images/vantovii.jpg',
-    alt: 'Вантовый мост',
   },
   {
     name: 'Витебский вокзал',
     link: './images/vitebskii.jpg',
-    alt: 'Витебский вокзал',
   },
 ];
 const btnAddCard = document.querySelector('.button-add');
@@ -59,7 +53,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function formSubmitHandler(evt) {
+function formEditSubmitHandler(evt) {
   evt.preventDefault();
 
   newName.textContent = nameInput.value;
@@ -75,7 +69,7 @@ function cardSubmitHandler(evt) {
   closePopup(popupModalCard);
 }
 
-function createCard(placeValue, srcValue, altValue) {
+function createCard(placeValue, srcValue) {
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate
     .querySelector('.elements__card')
@@ -86,13 +80,13 @@ function createCard(placeValue, srcValue, altValue) {
   cardImage.addEventListener('click', function () {
     openPopup(popupModalImage);
     popupImage.src = srcValue;
-    popupImage.alt = altValue;
+    popupImage.alt = placeValue;
     popupDescription.textContent = placeValue;
   });
 
   cardElement.querySelector('.elements__card-heading').textContent = placeValue;
   cardElement.querySelector('.elements__card-image').src = srcValue;
-  cardElement.querySelector('.elements__card-image').alt = altValue;
+  cardElement.querySelector('.elements__card-image').alt = placeValue;
 
   cardElement
     .querySelector('.button-like')
@@ -129,5 +123,5 @@ btnCloseProfile.addEventListener('click', () => closePopup(popupModalProfile));
 btnAddCard.addEventListener('click', () => openPopup(popupModalCard));
 btnCloseItem.addEventListener('click', () => closePopup(popupModalCard));
 btnCloseImage.addEventListener('click', () => closePopup(popupModalImage));
-formElementProfile.addEventListener('submit', formSubmitHandler);
+formElementProfile.addEventListener('submit', formEditSubmitHandler);
 formElementCard.addEventListener('submit', cardSubmitHandler);
