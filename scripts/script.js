@@ -108,8 +108,8 @@ function addCard(card) {
 }
 
 function renderCards() {
-  initialCards.forEach(({ name, link, alt }) => {
-    createCard(name, link, alt);
+  initialCards.forEach(({ name, link }) => {
+    createCard(name, link);
   });
 }
 
