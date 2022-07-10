@@ -161,6 +161,7 @@ function handlerInputForm(evt) {
   const form = evt.currentTarget;
 
   validateForm(form);
+  validateInput(evt.target);
 }
 
 function validateForm(form) {
@@ -174,30 +175,8 @@ function validateForm(form) {
   }
 }
 
-// const formElement = document.querySelector('.popup__form-edit');
-// const formInput = formElement.querySelector('.popup__input');
-// const formError = formElement.querySelector(`${formInput.id}-error`);
-
-// formInput.addEventListener('input', function (evt) {
-//   checkInputValidity();
-// });
-
-// const showError = (input, errorMessage) => {
-//   input.classList.add('popup__input_type_error');
-//   formError.textContent = errorMessage;
-//   formError.classList.add('popup__input-error_active');
-// };
-
-// const hideError = (input) => {
-//   input.classList.remove('popup__input_type_error');
-//   formError.classList.remove('popup__input-error_active');
-//   formError.textContent = '';
-// };
-
-// function checkInputValidity() {
-//   if (!formInput.validity.valid) {
-//     showError(formInput, formInput.validationMessage);
-//   } else {
-//     hideError(formInput);
-//   }
-// }
+function validateInput(input) {
+  const errorElement = input.parentNode.querySelector(`#${input.id}-error`);
+  errorElement.classList.add('popup__input-error_active');
+  errorElement.textContent = input.validationMessage;
+}
