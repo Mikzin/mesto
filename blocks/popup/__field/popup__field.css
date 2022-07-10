@@ -1,0 +1,9 @@
+.popup__field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.popup__field:last-of-type {
+  margin-bottom: 18px;
+}
