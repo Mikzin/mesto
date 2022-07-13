@@ -133,11 +133,10 @@ function renderCards() {
 
 function resetButton(formElement) {
   const btnSubmit = formElement.querySelector('.button-save');
-  console.log(btnSubmit);
-  if (!btnSubmit.classList.contains('button-save_inactive')) {
-    btnSubmit.setAttribute('disabled', true);
-    btnSubmit.classList.add('button-save_inactive');
-  }
+  // if (!btnSubmit.classList.contains('button-save_inactive')) {
+  btnSubmit.setAttribute('disabled', true);
+  btnSubmit.classList.add('button-save_inactive');
+  // }
 }
 
 renderCards();
