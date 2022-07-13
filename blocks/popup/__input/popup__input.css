@@ -12,10 +12,6 @@
   padding: 0;
 }
 
-.popup__input:invalid {
-  border-bottom: 1px solid #ff0000;
-}
-
 @media screen and (max-width: 580px) {
   .popup__input:last-of-type {
     width: 238px;
