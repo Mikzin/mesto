@@ -12,6 +12,7 @@
   transition: opacity ease-in 0.3s;
   background-position: center;
   background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .button-close:hover {
