@@ -59,8 +59,7 @@ function closePopup(popup) {
 function clickHandler(popup) {
   popup.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
-      const openedPopup = document.querySelector('.popup_opened');
-      closePopup(openedPopup);
+      closePopup(evt.target);
     }
   });
 }
@@ -101,6 +100,7 @@ function createCard(placeValue, srcValue) {
     popupImage.src = srcValue;
     popupImage.alt = placeValue;
     popupDescription.textContent = placeValue;
+    clickHandler(popupModalImage);
   });
 
   cardElement.querySelector('.elements__card-heading').textContent = placeValue;
