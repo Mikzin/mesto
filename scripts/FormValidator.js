@@ -54,11 +54,15 @@ class FormValidator {
   }
 
   enableValidation() {
-    const formList = Array.from(document.querySelectorAll(this._formSelector));
+    this._setEventListeners();
+  }
 
-    formList.forEach((formElement) => {
-      this._setEventListeners();
-    });
+  resetButton() {
+    const btnSubmit = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
+    btnSubmit.setAttribute('disabled', true);
+    btnSubmit.classList.add(this._inactiveButtonClass);
   }
 
   _hasInvalidInput(inputList) {

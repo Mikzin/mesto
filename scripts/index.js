@@ -1,14 +1,42 @@
-export {
-  openPopup,
-  popupImage,
-  clickHandler,
-  popupModalImage,
-  popupDescription,
-};
+export { openPopup, popupImage, popupModalImage, popupDescription };
 
-import { renderCards } from './Card.js';
+import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
+const initCards = [
+  {
+    name: 'Ангелы',
+    link: './images/angels.jpg',
+  },
+  {
+    name: 'Исаакиевский Собор',
+    link: './images/isaac.jpg',
+  },
+  {
+    name: 'Казанский собор',
+    link: './images/kazan.jpg',
+  },
+  {
+    name: 'Лахта Центр',
+    link: './images/lakhta.jpg',
+  },
+  {
+    name: 'Вантовый мост',
+    link: './images/vantovii.jpg',
+  },
+  {
+    name: 'Витебский вокзал',
+    link: './images/vitebskii.jpg',
+  },
+];
+const validationSettings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.button-save',
+  inactiveButtonClass: 'button-save_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active',
+};
 const btnAddCard = document.querySelector('.button-add');
 const btnEditProfile = document.querySelector('.button-edit');
 const btnCloseProfile = document.querySelector('#profile-close');
@@ -31,11 +59,13 @@ const linkInput = document.querySelector('#link');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', escHandler);
+  clickHandler(popup);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', escHandler);
+  document.removeEventListener('click', clickHandler(popup));
 }
 
 function clickHandler(popup) {
@@ -53,7 +83,7 @@ function escHandler(evt) {
   }
 }
 
-function formEditSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
   newName.textContent = nameInput.value;
@@ -62,46 +92,45 @@ function formEditSubmitHandler(evt) {
   closePopup(popupModalProfile);
 }
 
-function cardSubmitHandler(evt) {
+function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
-  renderCards(placeInput.value, linkInput.value);
+  renderCard(placeInput.value, linkInput.value);
   formElementCard.reset();
   closePopup(popupModalCard);
 }
 
-function resetButton(formElement) {
-  const btnSubmit = formElement.querySelector('.button-save');
-  btnSubmit.setAttribute('disabled', true);
-  btnSubmit.classList.add('button-save_inactive');
+initCards.forEach((item) => {
+  renderCard(item.name, item.link);
+});
+
+function renderCard(name, link) {
+  const card = new Card(name, link, '.card-template_type_default');
+  const cardElement = card.generateCard();
+
+  addCard(cardElement);
 }
+
+function addCard(card) {
+  document.querySelector('.elements').prepend(card);
+}
+const cardForm = new FormValidator(validationSettings, formElementCard);
+cardForm.enableValidation();
+
+const profileForm = new FormValidator(validationSettings, formElementProfile);
+profileForm.enableValidation();
 
 btnEditProfile.addEventListener('click', (evt) => {
   openPopup(popupModalProfile);
-  const form = new FormValidator(validationSettings, formElementProfile);
-  form.enableValidation();
   nameInput.value = newName.textContent;
   jobInput.value = newJob.textContent;
-  clickHandler(popupModalProfile);
 });
 
 btnCloseProfile.addEventListener('click', () => closePopup(popupModalProfile));
 btnAddCard.addEventListener('click', () => {
   openPopup(popupModalCard);
-  resetButton(popupModalCard);
-  const form = new FormValidator(validationSettings, formElementCard);
-  form.enableValidation();
-  clickHandler(popupModalCard);
+  cardForm.resetButton(popupModalCard);
 });
 btnCloseItem.addEventListener('click', () => closePopup(popupModalCard));
 btnCloseImage.addEventListener('click', () => closePopup(popupModalImage));
-formElementProfile.addEventListener('submit', formEditSubmitHandler);
-formElementCard.addEventListener('submit', cardSubmitHandler);
-
-const validationSettings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.button-save',
-  inactiveButtonClass: 'button-save_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active',
-};
+formElementProfile.addEventListener('submit', handleProfileFormSubmit);
+formElementCard.addEventListener('submit', handleAddCardFormSubmit);
