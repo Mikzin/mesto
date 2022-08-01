@@ -59,21 +59,19 @@ const linkInput = document.querySelector('#link');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', escHandler);
-  clickHandler(popup);
+  popup.addEventListener('click', clickHandler);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', escHandler);
-  document.removeEventListener('click', clickHandler(popup));
+  popup.removeEventListener('click', clickHandler);
 }
 
-function clickHandler(popup) {
-  popup.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-      closePopup(evt.target);
-    }
-  });
+function clickHandler(evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
+  }
 }
 
 function escHandler(evt) {
@@ -94,20 +92,18 @@ function handleProfileFormSubmit(evt) {
 
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
-  renderCard(placeInput.value, linkInput.value);
+  addCard(renderCard(placeInput.value, linkInput.value));
   formElementCard.reset();
   closePopup(popupModalCard);
 }
 
 initCards.forEach((item) => {
-  renderCard(item.name, item.link);
+  addCard(renderCard(item.name, item.link));
 });
 
 function renderCard(name, link) {
   const card = new Card(name, link, '.card-template_type_default');
-  const cardElement = card.generateCard();
-
-  addCard(cardElement);
+  return card.generateCard();
 }
 
 function addCard(card) {
@@ -128,7 +124,7 @@ btnEditProfile.addEventListener('click', (evt) => {
 btnCloseProfile.addEventListener('click', () => closePopup(popupModalProfile));
 btnAddCard.addEventListener('click', () => {
   openPopup(popupModalCard);
-  cardForm.resetButton(popupModalCard);
+  cardForm.resetButtonState(popupModalCard);
 });
 btnCloseItem.addEventListener('click', () => closePopup(popupModalCard));
 btnCloseImage.addEventListener('click', () => closePopup(popupModalImage));
