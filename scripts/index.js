@@ -124,7 +124,7 @@ btnEditProfile.addEventListener('click', (evt) => {
 btnCloseProfile.addEventListener('click', () => closePopup(popupModalProfile));
 btnAddCard.addEventListener('click', () => {
   openPopup(popupModalCard);
-  cardForm.resetButtonState(popupModalCard);
+  cardForm.disableButton();
 });
 btnCloseItem.addEventListener('click', () => closePopup(popupModalCard));
 btnCloseImage.addEventListener('click', () => closePopup(popupModalImage));
