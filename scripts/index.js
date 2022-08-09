@@ -1,13 +1,13 @@
-import Card from './src/scripts/Card.js';
-import FormValidator from './src/scripts/FormValidator.js';
-import './src/pages/index.css';
+import '../pages/index.css';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 
-import angelsImage from './src/images/angels.jpg';
-import isaacImage from './src/images/isaac.jpg';
-import kazanImage from './src/images/kazan.jpg';
-import lakhtaImage from './src/images/lakhta.jpg';
-import vantoviiImage from './src/images/vantovii.jpg';
-import vitebskiiImage from './src/images/vitebskii.jpg';
+import angelsImage from '../images/angels.jpg';
+import isaacImage from '../images/isaac.jpg';
+import kazanImage from '../images/kazan.jpg';
+import lakhtaImage from '../images/lakhta.jpg';
+import vantoviiImage from '../images/vantovii.jpg';
+import vitebskiiImage from '../images/vitebskii.jpg';
 
 const initCards = [
   {

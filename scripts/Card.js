@@ -3,7 +3,7 @@ import {
   popupImage,
   popupModalImage,
   popupDescription,
-} from '../../index.js';
+} from './index.js';
 
 export default class Card {
   constructor(name, link, templateSelector) {
