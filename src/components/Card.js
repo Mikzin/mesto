@@ -1,14 +1,14 @@
+import { openPopup } from '../pages/index.js';
 import {
-  openPopup,
   popupImage,
   popupModalImage,
   popupDescription,
-} from './index.js';
+} from '../utils/constants.js';
 
 export default class Card {
-  constructor(name, link, templateSelector) {
-    this._name = name;
-    this._link = link;
+  constructor(data, templateSelector) {
+    this._name = data.name;
+    this._link = data.link;
     this._templateSelector = templateSelector;
   }
 
