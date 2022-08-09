@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <script src="./scripts/index.js" type="module" defer></script>
-    <script src="./scripts/FormValidator.js" type="module" defer></script>
-    <script src="./scripts/Card.js" type="module" defer></script>
+    <!-- <link rel="stylesheet" href="./src/pages/index.css" /> -->
+    <!-- <script src="./index.js" type="module" defer></script>
+    <script src="./src/scripts/FormValidator.js" type="module" defer></script>
+    <script src="./src/scripts/Card.js" type="module" defer></script> -->
     <title>Mesto Russia</title>
     <meta
       name="description"
@@ -18,13 +18,22 @@
 
   <body class="root">
     <header class="header">
-      <img src="./images/logo.svg" class="logo" alt="логотип Место" />
+      <img
+        src="<%=require('./src/images/logo.svg')%>"
+        class="logo"
+        alt="логотип
+      Место"
+      />
     </header>
 
     <main class="content">
       <section class="profile">
         <div class="profile__info">
-          <img src="./images/kusto.jpg" alt="Кусто" class="profile__avatar" />
+          <img
+            src="<%=require('./src/images/kusto.jpg')%>"
+            alt="Кусто"
+            class="profile__avatar"
+          />
           <div class="profile__subinfo">
             <div class="profile__header">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -153,7 +162,7 @@
 
     <div class="popup popup-image">
       <div class="popup-image__container">
-        <img src="./images/angels.jpg" class="popup-image__img" />
+        <img src="#" class="popup-image__img" />
         <p class="popup-image__description"></p>
         <button
           class="button-close"
@@ -166,7 +175,7 @@
 
     <template id="card-template" class="card-template_type_default">
       <article class="elements__card">
-        <img src="./images/angels.jpg" class="elements__card-image" alt="" />
+        <img src="#" class="elements__card-image" alt="" />
         <div class="elements__card-info">
           <h2 class="elements__card-heading"></h2>
           <button class="button-like" type="button" aria-label="Лайк"></button>
