@@ -1,12 +1,12 @@
-import Card from './Card';
-
 export default class Section {
-  constructor({ data }, containerSelector) {
+  constructor({ data, renderer }, containerSelector) {
     this._renderedItems = data;
+    this._renderer = renderer;
+
     this._container = document.querySelector(containerSelector);
   }
 
-  setItem(element) {
+  addItem(element) {
     this._container.prepend(element);
   }
 
@@ -18,10 +18,7 @@ export default class Section {
     this.clear();
 
     this._renderedItems.forEach((item) => {
-      const card = new Card(item, '.card-template_type_default');
-      const cardElement = card.generateCard();
-
-      this.setItem(cardElement);
+      this._renderer(item);
     });
   }
 }

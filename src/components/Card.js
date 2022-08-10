@@ -1,15 +1,11 @@
-import { openPopup } from '../pages/index.js';
-import {
-  popupImage,
-  popupModalImage,
-  popupDescription,
-} from '../utils/constants.js';
+import { handleCardClick } from '../pages/index.js';
 
 export default class Card {
   constructor(data, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -32,10 +28,7 @@ export default class Card {
   }
 
   _handleOpenImage() {
-    openPopup(popupModalImage);
-    popupImage.src = this._link;
-    popupImage.alt = this._name;
-    popupDescription.textContent = this._name;
+    this._handleCardClick(this._name, this._link);
   }
 
   _setEventListeners() {
