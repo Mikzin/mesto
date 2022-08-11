@@ -4,27 +4,15 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 
 import {
-  newName,
-  newJob,
   nameInput,
   jobInput,
-  popupModalProfile,
-  placeInput,
-  linkInput,
   formElementCard,
-  popupModalCard,
   initCards,
   validationSettings,
   formElementProfile,
   btnEditProfile,
-  btnCloseProfile,
   btnAddCard,
-  btnCloseItem,
-  btnCloseImage,
-  popupModalImage,
   cardListSelector,
-  popupCardSelector,
-  popupEditSelector,
 } from '../utils/constants.js';
 
 import PopupWithImage from '../components/PopupWithImage';
@@ -63,16 +51,6 @@ const formCard = new PopupWithForm({
   },
 });
 
-// const handleProfileFormSubmit = () => {
-//   document
-//     .querySelector('.popup__form-edit')
-//     .addEventListener('submit', (evt) => {
-//       evt.preventDefault();
-//       info.setUserInfo(nameInput.value, jobInput.value);
-//       formEdit.close();
-//     });
-// };
-
 const formEdit = new PopupWithForm({
   popupSelector: '.popup-edit',
   handleFormSubmit: (userData) => {
@@ -80,23 +58,6 @@ const formEdit = new PopupWithForm({
     formEdit.close();
   },
 });
-// :
-// () => {
-//   document
-//     .querySelector('.popup__form-edit')
-//     .addEventListener('submit', (evt) => {
-//       evt.preventDefault();
-//       info.getUserInfo();
-//       info.setUserInfo(nameInput.value, jobInput.value);
-//       formEdit.close();
-//     });
-// },
-// );
-
-// function handleFormEditSubmit(user) {
-//   info.setUserInfo(user);
-//   formEdit.close();
-// }
 
 const info = new UserInfo('.profile__name', '.profile__description');
 
@@ -119,58 +80,3 @@ btnEditProfile.addEventListener('click', () => {
   formEdit.open();
   editInputs();
 });
-
-/////////////////////////
-// export function openPopup(popup) {
-//   popup.classList.add('popup_opened');
-//   document.addEventListener('keydown', escHandler);
-//   popup.addEventListener('click', clickHandler);
-// }
-
-// function closePopup(popup) {
-//   popup.classList.remove('popup_opened');
-//   document.removeEventListener('keydown', escHandler);
-//   popup.removeEventListener('click', clickHandler);
-// }
-
-// function clickHandler(evt) {
-//   if (evt.target.classList.contains('popup_opened')) {
-//     closePopup(evt.target);
-//   }
-// }
-
-// function escHandler(evt) {
-//   if (evt.key === 'Escape') {
-//     const openedPopup = document.querySelector('.popup_opened');
-//     closePopup(openedPopup);
-//   }
-// }
-
-// function handleProfileFormSubmit(evt) {
-//   evt.preventDefault();
-
-//   newName.textContent = nameInput.value;
-//   newJob.textContent = jobInput.value;
-
-//   closePopup(popupModalProfile);
-// }
-
-// function handleAddCardFormSubmit(evt) {
-//   evt.preventDefault();
-//   addCard(renderCard(placeInput.value, linkInput.value));
-//   formElementCard.reset();
-//   closePopup(popupModalCard);
-// }
-
-// btnEditProfile.addEventListener('click', (evt) => {
-//   openPopup(popupModalProfile);
-//   nameInput.value = newName.textContent;
-//   jobInput.value = newJob.textContent;
-// });
-
-// btnCloseProfile.addEventListener('click', () => closePopup(popupModalProfile));
-
-// btnCloseItem.addEventListener('click', () => closePopup(popupModalCard));
-// btnCloseImage.addEventListener('click', () => closePopup(popupModalImage));
-// formElementProfile.addEventListener('submit', handleProfileFormSubmit);
-// formElementCard.addEventListener('submit', handleAddCardFormSubmit);

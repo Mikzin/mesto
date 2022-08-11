@@ -60,5 +60,4 @@ export const popupDescription = document.querySelector(
 export const placeInput = document.querySelector('#place');
 export const linkInput = document.querySelector('#link');
 export const cardListSelector = '.elements';
-// export const popupCardSelector = '.popup-newitem';
 export const popupEditSelector = '.popup-edit';
