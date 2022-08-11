@@ -23,10 +23,13 @@ import {
   btnCloseImage,
   popupModalImage,
   cardListSelector,
+  popupCardSelector,
+  popupEditSelector,
 } from '../utils/constants.js';
 
 import PopupWithImage from '../components/PopupWithImage';
 import PopupWithForm from '../components/PopupWithForm';
+import UserInfo from '../components/UserInfo';
 
 const cardForm = new FormValidator(validationSettings, formElementCard);
 cardForm.enableValidation();
@@ -60,6 +63,49 @@ const formCard = new PopupWithForm({
   },
 });
 
+// const handleProfileFormSubmit = () => {
+//   document
+//     .querySelector('.popup__form-edit')
+//     .addEventListener('submit', (evt) => {
+//       evt.preventDefault();
+//       info.setUserInfo(nameInput.value, jobInput.value);
+//       formEdit.close();
+//     });
+// };
+
+const formEdit = new PopupWithForm({
+  popupSelector: '.popup-edit',
+  handleFormSubmit: (userData) => {
+    info.setUserInfo(userData.firstname, userData.description);
+    formEdit.close();
+  },
+});
+// :
+// () => {
+//   document
+//     .querySelector('.popup__form-edit')
+//     .addEventListener('submit', (evt) => {
+//       evt.preventDefault();
+//       info.getUserInfo();
+//       info.setUserInfo(nameInput.value, jobInput.value);
+//       formEdit.close();
+//     });
+// },
+// );
+
+// function handleFormEditSubmit(user) {
+//   info.setUserInfo(user);
+//   formEdit.close();
+// }
+
+const info = new UserInfo('.profile__name', '.profile__description');
+
+function editInputs() {
+  const userInfo = info.getUserInfo();
+  nameInput.value = userInfo.firstname;
+  jobInput.value = userInfo.description;
+}
+
 export function handleCardClick(name, url) {
   popupImage.open(name, url);
 }
@@ -67,6 +113,11 @@ export function handleCardClick(name, url) {
 btnAddCard.addEventListener('click', () => {
   formCard.open();
   cardForm.disableButton();
+});
+
+btnEditProfile.addEventListener('click', () => {
+  formEdit.open();
+  editInputs();
 });
 
 /////////////////////////
