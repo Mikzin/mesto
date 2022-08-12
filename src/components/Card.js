@@ -1,7 +1,5 @@
-import { handleCardClick } from '../pages/index.js';
-
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
@@ -18,9 +16,7 @@ export default class Card {
   }
 
   _handleLikeClick() {
-    this._element
-      .querySelector('.button-like')
-      .classList.toggle('button-like_active');
+    this._likeButton.classList.toggle('button-like_active');
   }
 
   _handleDeleteClick() {
@@ -32,34 +28,31 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._element
-      .querySelector('.button-like')
-      .addEventListener('click', () => {
-        this._handleLikeClick();
-      });
+    this._likeButton = this._element.querySelector('.button-like');
+    this._deleteButton = this._element.querySelector('.button-delete');
+    this._cardImage = this._element.querySelector('.elements__card-image');
+    this._cardHeading = this._element.querySelector('.elements__card-heading');
 
-    this._element
-      .querySelector('.button-delete')
-      .addEventListener('click', () => {
-        this._handleDeleteClick();
-      });
+    this._likeButton.addEventListener('click', () => {
+      this._handleLikeClick();
+    });
 
-    this._element
-      .querySelector('.elements__card-image')
-      .addEventListener('click', () => {
-        this._handleOpenImage();
-      });
+    this._deleteButton.addEventListener('click', () => {
+      this._handleDeleteClick();
+    });
+
+    this._cardImage.addEventListener('click', () => {
+      this._handleOpenImage();
+    });
   }
 
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    const image = this._element.querySelector('.elements__card-image');
-    image.src = this._link;
-    image.alt = this._name;
-    this._element.querySelector('.elements__card-heading').textContent =
-      this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._cardHeading.textContent = this._name;
 
     return this._element;
   }

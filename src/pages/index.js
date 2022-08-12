@@ -29,10 +29,7 @@ const defaultCardList = new Section(
   {
     data: initCards,
     renderer: (item) => {
-      const card = new Card(item, '.card-template_type_default');
-      const cardElement = card.generateCard();
-
-      defaultCardList.addItem(cardElement);
+      defaultCardList.addItem(createCard(item));
     },
   },
   cardListSelector
@@ -44,10 +41,7 @@ const popupImage = new PopupWithImage('.popup-image');
 const formCard = new PopupWithForm({
   popupSelector: '.popup-newitem',
   handleFormSubmit: (formData) => {
-    const card = new Card(formData, '.card-template_type_default');
-    const cardElement = card.generateCard();
-
-    defaultCardList.addItem(cardElement);
+    defaultCardList.addItem(createCard(formData));
   },
 });
 
@@ -63,20 +57,27 @@ const info = new UserInfo('.profile__name', '.profile__description');
 
 function editInputs() {
   const userInfo = info.getUserInfo();
-  nameInput.value = userInfo.firstname;
-  jobInput.value = userInfo.description;
+  formEdit.setInputValues(userInfo);
 }
 
-export function handleCardClick(name, url) {
+function handleCardClick(name, url) {
   popupImage.open(name, url);
+}
+
+function createCard(item) {
+  const card = new Card(item, '.card-template_type_default', handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
 }
 
 btnAddCard.addEventListener('click', () => {
   formCard.open();
   cardForm.disableButton();
+  cardForm.resetValidation();
 });
 
 btnEditProfile.addEventListener('click', () => {
   formEdit.open();
   editInputs();
+  profileForm.resetValidation();
 });

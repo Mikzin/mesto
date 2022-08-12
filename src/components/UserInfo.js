@@ -13,7 +13,6 @@ export default class UserInfo {
       description: this._description,
     };
 
-    console.log(this.info);
     return this.info;
   }
 
