@@ -25,11 +25,20 @@
     <main class="content">
       <section class="profile">
         <div class="profile__info">
-          <img
-            src="<%=require('./images/kusto.jpg')%>"
-            alt="Кусто"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <img
+              src="<%=require('./images/kusto.jpg')%>"
+              alt="Кусто"
+              class="profile__avatar"
+            />
+            <span class="profile__avatar-mask">
+              <img
+                src="<%=require('./images/button_edit.svg')%>"
+                class="profile__avatar-edit"
+                alt="Редактирование"
+              />
+            </span>
+          </div>
           <div class="profile__subinfo">
             <div class="profile__header">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -156,6 +165,62 @@
       </div>
     </div>
 
+    <div class="popup popup-confirm">
+      <div class="popup__container">
+        <h2 class="popup__title popup-confirm__title">Вы уверены?</h2>
+        <form class="popup__form" name="confirm" id="comnfirm-form">
+          <button
+            class="button-save"
+            type="submit"
+            id="button-save-item"
+            disabled
+          >
+            Да
+          </button>
+        </form>
+        <button
+          class="button-close"
+          type="button"
+          id="item-close"
+          aria-label="Закрыть"
+        ></button>
+      </div>
+    </div>
+
+    <div class="popup popup-avatar">
+      <div class="popup__container">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="popup__form" name="avatar" id="avatar-form" novalidate>
+          <label class="popup__field">
+            <input
+              class="popup__input"
+              id="link"
+              type="url"
+              name="link"
+              value=""
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span class="popup__input-error link-error" id="link-error"></span>
+          </label>
+          <button
+            class="button-save button-save_inactive"
+            type="submit"
+            id="button-save-item"
+            disabled
+          >
+            Сохранить
+          </button>
+        </form>
+        <button
+          class="button-close"
+          type="button"
+          id="item-close"
+          aria-label="Закрыть"
+        ></button>
+      </div>
+    </div>
+
     <div class="popup popup-image">
       <div class="popup-image__container">
         <img src="#" class="popup-image__img" />
@@ -174,7 +239,16 @@
         <img src="#" class="elements__card-image" alt="" />
         <div class="elements__card-info">
           <h2 class="elements__card-heading"></h2>
-          <button class="button-like" type="button" aria-label="Лайк"></button>
+          <div class="button-like__info">
+            <button
+              class="button-like"
+              type="button"
+              aria-label="Лайк"
+            ></button>
+            <span class="button-like__counter button-like__counter_inactive"
+              >1</span
+            >
+          </div>
         </div>
         <button
           class="button-delete"
