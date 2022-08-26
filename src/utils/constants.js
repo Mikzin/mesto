@@ -39,6 +39,15 @@ export const validationSettings = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active',
 };
+
+export const apiData = {
+  baseUrl: 'https://mesto.nomoreparties.co/v1',
+  headers: {
+    authorization: 'a708ea48-103c-4b33-ba20-afa3b6d8d32c',
+    'Content-Type': 'application/json',
+  },
+};
+
 export const btnAddCard = document.querySelector('.button-add');
 export const btnEditProfile = document.querySelector('.button-edit');
 export const btnCloseProfile = document.querySelector('#profile-close');
@@ -50,14 +59,14 @@ export const popupModalImage = document.querySelector('.popup-image');
 export const formElementCard = document.querySelector('#card-form');
 export const formElementProfile = document.querySelector('#edit-form');
 export const nameInput = formElementProfile.querySelector('#name');
-export const jobInput = formElementProfile.querySelector('#description');
+export const jobInput = formElementProfile.querySelector('#about');
 export const newName = document.querySelector('.profile__name');
 export const newJob = document.querySelector('.profile__description');
 export const popupImage = document.querySelector('.popup-image__img');
 export const popupDescription = document.querySelector(
   '.popup-image__description'
 );
-export const placeInput = document.querySelector('#place');
+export const placeInput = document.querySelector('#name');
 export const linkInput = document.querySelector('#link');
 export const cardListSelector = '.elements';
 export const popupEditSelector = '.popup-edit';

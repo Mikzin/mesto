@@ -4,20 +4,21 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 
 import {
-  nameInput,
-  jobInput,
   formElementCard,
-  initCards,
+  // initCards,
   validationSettings,
   formElementProfile,
   btnEditProfile,
   btnAddCard,
   cardListSelector,
+  apiData,
+  initCards,
 } from '../utils/constants.js';
 
 import PopupWithImage from '../components/PopupWithImage';
 import PopupWithForm from '../components/PopupWithForm';
 import UserInfo from '../components/UserInfo';
+import Api from '../components/Api';
 
 const cardForm = new FormValidator(validationSettings, formElementCard);
 cardForm.enableValidation();
@@ -34,7 +35,6 @@ const defaultCardList = new Section(
   },
   cardListSelector
 );
-defaultCardList.renderItems();
 
 const popupImage = new PopupWithImage('.popup-image');
 
@@ -48,12 +48,25 @@ const formCard = new PopupWithForm({
 const formEdit = new PopupWithForm({
   popupSelector: '.popup-edit',
   handleFormSubmit: (userData) => {
-    info.setUserInfo(userData.firstname, userData.description);
+    info.setUserInfo(userData.name, userData.about);
     formEdit.close();
   },
 });
 
-const info = new UserInfo('.profile__name', '.profile__description');
+const info = new UserInfo(
+  '.profile__name',
+  '.profile__description',
+  '.profile__avatar'
+);
+
+const api = new Api(apiData);
+Promise.all([api.getUserProfile(), api.getInitialCards()]).then(
+  ([userData, userCards]) => {
+    info.setUserInfo(userData.name, userData.about);
+    info.setUserAvatar(userData.avatar);
+    defaultCardList.renderItems(userCards);
+  }
+);
 
 function editInputs() {
   const userInfo = info.getUserInfo();

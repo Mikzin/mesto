@@ -14,8 +14,10 @@ export default class Section {
     this._container.innerHTML = '';
   }
 
-  renderItems() {
+  renderItems(list) {
     this.clear();
+
+    this._renderedItems = list;
 
     this._renderedItems.forEach((item) => {
       this._renderer(item);
