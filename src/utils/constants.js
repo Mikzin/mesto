@@ -58,6 +58,7 @@ export const popupModalCard = document.querySelector('.popup-newitem');
 export const popupModalImage = document.querySelector('.popup-image');
 export const formElementCard = document.querySelector('#card-form');
 export const formElementProfile = document.querySelector('#edit-form');
+export const formElementAvatar = document.querySelector('#avatar-form');
 export const nameInput = formElementProfile.querySelector('#name');
 export const jobInput = formElementProfile.querySelector('#about');
 export const newName = document.querySelector('.profile__name');

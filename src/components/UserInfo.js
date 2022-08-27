@@ -25,4 +25,12 @@ export default class UserInfo {
   setUserAvatar(avatarLink) {
     this._avatar.src = avatarLink;
   }
+
+  saveUserInfo(info) {
+    this._userInfo = info;
+  }
+
+  getSavedInfo = () => {
+    return this._userInfo;
+  };
 }

@@ -22,6 +22,7 @@
 @import url(../blocks/button-save/button-save.css);
 @import url(../blocks/button-save/_inactive/button-save_inactive.css);
 @import url(../blocks/button-delete/button-delete.css);
+@import url(../blocks/button-delete/_inactive/button-delete_inactive.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__card-heading/elements__card-heading.css);
