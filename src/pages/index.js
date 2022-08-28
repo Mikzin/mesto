@@ -58,9 +58,14 @@ const formCard = new PopupWithForm({
   popupSelector: '.popup-newitem',
   handleFormSubmit: (data, btnSubmit) => {
     sumbitLoading(true, btnSubmit);
-    api.postCard(data).then((formData) => {
-      defaultCardList.addItem(createCard(formData));
-    });
+    api
+      .postCard(data)
+      .then((formData) => {
+        defaultCardList.addItem(createCard(formData));
+      })
+      .finally(() => {
+        sumbitLoading(false, btnSubmit);
+      });
   },
 });
 
@@ -68,10 +73,15 @@ const formEdit = new PopupWithForm({
   popupSelector: '.popup-edit',
   handleFormSubmit: (data, btnSubmit) => {
     sumbitLoading(true, btnSubmit);
-    api.setUserProfile(data).then((userData) => {
-      info.setUserInfo(userData.name, userData.about);
-      formEdit.close();
-    });
+    api
+      .setUserProfile(data)
+      .then((userData) => {
+        info.setUserInfo(userData.name, userData.about);
+        formEdit.close();
+      })
+      .finally(() => {
+        sumbitLoading(false, btnSubmit);
+      });
   },
 });
 
@@ -79,12 +89,16 @@ const formAvatar = new PopupWithForm({
   popupSelector: '.popup-avatar',
   handleFormSubmit: (data, btnSubmit) => {
     sumbitLoading(true, btnSubmit);
-    api.setAvatar(data).then((avatarInfo) => {
-      console.log(avatarInfo);
-      info.setUserAvatar(avatarInfo.avatar);
-      formAvatar.close();
-      2;
-    });
+    api
+      .setAvatar(data)
+      .then((avatarInfo) => {
+        info.setUserAvatar(avatarInfo.avatar);
+        formAvatar.close();
+        2;
+      })
+      .finally(() => {
+        sumbitLoading(false, btnSubmit);
+      });
   },
 });
 
