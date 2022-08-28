@@ -1,3 +1,5 @@
+import { info } from 'autoprefixer';
+
 export default class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -48,6 +50,21 @@ export default class Api {
     }
   }
 
+  async setAvatar(info) {
+    try {
+      const avatar = await fetch(`${this._baseUrl}/cohort-49/users/me/avatar`, {
+        method: 'PATCH',
+        headers: this._headers,
+        body: JSON.stringify({ avatar: info.link }),
+      });
+
+      const data = await this._getResponse(avatar);
+      return data;
+    } catch (err) {
+      console.log('Не удалось сменить аватар!');
+    }
+  }
+
   async postCard(info) {
     try {
       const card = await fetch(`${this._baseUrl}/cohort-49/cards`, {
@@ -88,7 +105,6 @@ export default class Api {
       });
 
       const data = await this._getResponse(like);
-      console.log(data);
       return data;
     } catch (err) {
       console.log('Не удалось поставить лайк!');
@@ -101,7 +117,7 @@ export default class Api {
         method: 'DELETE',
         headers: this._headers,
       });
-      console.log(like);
+
       const data = await this._getResponse(like);
       return data;
     } catch (err) {

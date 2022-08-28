@@ -10,6 +10,7 @@ import {
   formElementProfile,
   btnEditProfile,
   btnAddCard,
+  btnEditAvatar,
   cardListSelector,
   apiData,
   initCards,
@@ -27,6 +28,9 @@ cardForm.enableValidation();
 
 const profileForm = new FormValidator(validationSettings, formElementProfile);
 profileForm.enableValidation();
+
+const avatarForm = new FormValidator(validationSettings, formElementAvatar);
+avatarForm.enableValidation();
 
 const defaultCardList = new Section(
   {
@@ -52,7 +56,8 @@ const popupConfirm = new PopupWithConfirm({
 
 const formCard = new PopupWithForm({
   popupSelector: '.popup-newitem',
-  handleFormSubmit: (data) => {
+  handleFormSubmit: (data, btnSubmit) => {
+    sumbitLoading(true, btnSubmit);
     api.postCard(data).then((formData) => {
       defaultCardList.addItem(createCard(formData));
     });
@@ -61,10 +66,24 @@ const formCard = new PopupWithForm({
 
 const formEdit = new PopupWithForm({
   popupSelector: '.popup-edit',
-  handleFormSubmit: (data) => {
+  handleFormSubmit: (data, btnSubmit) => {
+    sumbitLoading(true, btnSubmit);
     api.setUserProfile(data).then((userData) => {
       info.setUserInfo(userData.name, userData.about);
       formEdit.close();
+    });
+  },
+});
+
+const formAvatar = new PopupWithForm({
+  popupSelector: '.popup-avatar',
+  handleFormSubmit: (data, btnSubmit) => {
+    sumbitLoading(true, btnSubmit);
+    api.setAvatar(data).then((avatarInfo) => {
+      console.log(avatarInfo);
+      info.setUserAvatar(avatarInfo.avatar);
+      formAvatar.close();
+      2;
     });
   },
 });
@@ -109,6 +128,14 @@ function createCard(item) {
   return cardElement;
 }
 
+function sumbitLoading(isLoading, btnSubmit) {
+  if (isLoading) {
+    btnSubmit.textContent = 'Cохранение...';
+  } else {
+    btnSubmit.textContent = 'Cохранить';
+  }
+}
+
 btnAddCard.addEventListener('click', () => {
   formCard.open();
   cardForm.disableButton();
@@ -119,4 +146,9 @@ btnEditProfile.addEventListener('click', () => {
   formEdit.open();
   editInputs();
   profileForm.resetValidation();
+});
+
+btnEditAvatar.addEventListener('click', () => {
+  formAvatar.open();
+  avatarForm.resetValidation();
 });

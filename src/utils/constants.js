@@ -50,6 +50,7 @@ export const apiData = {
 
 export const btnAddCard = document.querySelector('.button-add');
 export const btnEditProfile = document.querySelector('.button-edit');
+export const btnEditAvatar = document.querySelector('.profile__avatar-mask');
 export const btnCloseProfile = document.querySelector('#profile-close');
 export const btnCloseItem = document.querySelector('#item-close');
 export const btnCloseImage = document.querySelector('#image-close');

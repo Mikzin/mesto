@@ -78,25 +78,18 @@ export default class Card {
   _addLike() {
     this._putLikes(this._id).then((res) => {
       this.likeCounter.textContent = res.likes.length;
-      this._setLike(this);
     });
   }
 
   _removeLike() {
     this._deleteLikes(this._id).then((res) => {
       this.likeCounter.textContent = res.likes.length;
-      this._setLike(this);
     });
-  }
-
-  _setLike() {
-    this.likeCounter.classList.toggle('button-like_inactive');
   }
 
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._setLike();
 
     if (this.cardOwnerId !== this._myId) {
       this._deleteButton.classList.add('button-delete_inactive');
