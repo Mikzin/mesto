@@ -1,5 +1,13 @@
 export default class Card {
-  constructor(data, templateSelector, handleCardClick, deletePopup, savedInfo) {
+  constructor(
+    data,
+    templateSelector,
+    handleCardClick,
+    deletePopup,
+    savedInfo,
+    putLikes,
+    deleteLikes
+  ) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
@@ -10,6 +18,8 @@ export default class Card {
     this.cardOwnerId = data.owner._id;
     this._myId = savedInfo._id;
     this._deletePopup = deletePopup;
+    this._putLikes = putLikes;
+    this._deleteLikes = deleteLikes;
   }
 
   _getTemplate() {
@@ -30,7 +40,7 @@ export default class Card {
   }
 
   _deleteCard() {
-    this._handleCardClick();
+    this._handleDeleteClick();
     this._element = null;
   }
 
@@ -45,8 +55,13 @@ export default class Card {
     this._cardHeading = this._element.querySelector('.elements__card-heading');
     this.likeCounter = this._element.querySelector('.button-like__counter');
 
-    this._likeButton.addEventListener('click', () => {
+    this._likeButton.addEventListener('click', (evt) => {
       this._handleLikeClick();
+      if (this._likeButton.classList.contains('button-like_active')) {
+        this._addLike();
+      } else {
+        this._removeLike();
+      }
     });
 
     if (!this._deleteButton.classList.contains('button-delete_inactive')) {
@@ -60,10 +75,22 @@ export default class Card {
     });
   }
 
-  // _countLikes() {}
+  _addLike() {
+    this._putLikes(this._id).then((res) => {
+      this.likeCounter.textContent = res.likes.length;
+      this._setLike(this);
+    });
+  }
+
+  _removeLike() {
+    this._deleteLikes(this._id).then((res) => {
+      this.likeCounter.textContent = res.likes.length;
+      this._setLike(this);
+    });
+  }
 
   _setLike() {
-    this.likeCounter.classList.toggle('button-like__counter_inactive');
+    this.likeCounter.classList.toggle('button-like_inactive');
   }
 
   generateCard() {
@@ -71,7 +98,6 @@ export default class Card {
     this._setEventListeners();
     this._setLike();
 
-    // console.log(this.cardOwnerId, this._myId);
     if (this.cardOwnerId !== this._myId) {
       this._deleteButton.classList.add('button-delete_inactive');
     }

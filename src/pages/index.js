@@ -44,6 +44,7 @@ const popupConfirm = new PopupWithConfirm({
   popupSelector: '.popup-confirm',
   handleFormSubmit: (deleteCard, id) => {
     api.deleteCard(id).then(() => {
+      deleteCard();
       popupConfirm.close();
     });
   },
@@ -100,7 +101,9 @@ function createCard(item) {
     '.card-template_type_default',
     handleCardClick,
     popupConfirm.open.bind(popupConfirm),
-    info.getSavedInfo()
+    info.getSavedInfo(),
+    api.putLikes.bind(api),
+    api.deleteLikes.bind(api)
   );
   const cardElement = card.generateCard();
   return cardElement;

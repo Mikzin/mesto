@@ -80,6 +80,35 @@ export default class Api {
     }
   }
 
+  async putLikes(id) {
+    try {
+      const like = await fetch(`${this._baseUrl}/cohort-49/cards/${id}/likes`, {
+        method: 'PUT',
+        headers: this._headers,
+      });
+
+      const data = await this._getResponse(like);
+      console.log(data);
+      return data;
+    } catch (err) {
+      console.log('Не удалось поставить лайк!');
+    }
+  }
+
+  async deleteLikes(id) {
+    try {
+      const like = await fetch(`${this._baseUrl}/cohort-49/cards/${id}/likes`, {
+        method: 'DELETE',
+        headers: this._headers,
+      });
+      console.log(like);
+      const data = await this._getResponse(like);
+      return data;
+    } catch (err) {
+      console.log('Не удалось убрать лайк!');
+    }
+  }
+
   _getResponse(res) {
     if (res.ok) {
       return res.json();
