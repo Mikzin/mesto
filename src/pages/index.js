@@ -47,10 +47,13 @@ const popupImage = new PopupWithImage('.popup-image');
 const popupConfirm = new PopupWithConfirm({
   popupSelector: '.popup-confirm',
   handleFormSubmit: (deleteCard, id) => {
-    api.deleteCard(id).then(() => {
-      deleteCard();
-      popupConfirm.close();
-    });
+    api
+      .deleteCard(id)
+      .then(() => {
+        deleteCard();
+        popupConfirm.close();
+      })
+      .catch((err) => console.log(`Ошибка: ${err}`));
   },
 });
 
@@ -62,7 +65,9 @@ const formCard = new PopupWithForm({
       .postCard(data)
       .then((formData) => {
         defaultCardList.addItem(createCard(formData));
+        formCard.close();
       })
+      .catch((err) => console.log(`Ошибка: ${err}`))
       .finally(() => {
         sumbitLoading(false, btnSubmit);
       });
@@ -79,6 +84,7 @@ const formEdit = new PopupWithForm({
         info.setUserInfo(userData.name, userData.about);
         formEdit.close();
       })
+      .catch((err) => console.log(`Ошибка: ${err}`))
       .finally(() => {
         sumbitLoading(false, btnSubmit);
       });
@@ -94,8 +100,8 @@ const formAvatar = new PopupWithForm({
       .then((avatarInfo) => {
         info.setUserAvatar(avatarInfo.avatar);
         formAvatar.close();
-        2;
       })
+      .catch((err) => console.log(`Ошибка: ${err}`))
       .finally(() => {
         sumbitLoading(false, btnSubmit);
       });
@@ -110,14 +116,14 @@ const info = new UserInfo(
 
 const api = new Api(apiData);
 
-Promise.all([api.getUserProfile(), api.getInitialCards()]).then(
-  ([userData, userCards]) => {
+Promise.all([api.getUserProfile(), api.getInitialCards()])
+  .then(([userData, userCards]) => {
     info.saveUserInfo(userData);
     info.setUserInfo(userData.name, userData.about);
     info.setUserAvatar(userData.avatar);
     defaultCardList.renderItems(userCards);
-  }
-);
+  })
+  .catch((err) => console.log(`Ошибка: ${err}`));
 
 function editInputs() {
   const userInfo = info.getUserInfo();

@@ -19,7 +19,7 @@ export default class Section {
 
     this._renderedItems = list;
 
-    this._renderedItems.forEach((item) => {
+    this._renderedItems.reverse().forEach((item) => {
       this._renderer(item);
     });
   }
