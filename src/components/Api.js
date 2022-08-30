@@ -9,21 +9,13 @@ export default class Api {
   getUserProfile() {
     return fetch(`${this._baseUrl}/cohort-49/users/me`, {
       headers: this._headers,
-    })
-      .then((res) => this._getResponse(res))
-      .catch((err) => {
-        console.log('Не удалось получить данные профиля!');
-      });
+    }).then((res) => this._getResponse(res));
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cohort-49/cards`, {
       headers: this._headers,
-    })
-      .then((res) => this._getResponse(res))
-      .catch((err) => {
-        console.log('Не удалось получить данные карточек!');
-      });
+    }).then((res) => this._getResponse(res));
   }
 
   setUserProfile(info) {
@@ -34,11 +26,7 @@ export default class Api {
         name: info.name,
         about: info.about,
       }),
-    })
-      .then((res) => this._getResponse(res))
-      .catch((err) => {
-        console.log('Не удалось отправить данные!=(');
-      });
+    }).then((res) => this._getResponse(res));
   }
 
   setAvatar(info) {
@@ -46,11 +34,7 @@ export default class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({ avatar: info.link }),
-    })
-      .then((res) => this._getResponse(res))
-      .catch((err) => {
-        console.log('Не удалось сменить аватар!');
-      });
+    }).then((res) => this._getResponse(res));
   }
 
   postCard(info) {
@@ -61,44 +45,28 @@ export default class Api {
         name: info.name,
         link: info.link,
       }),
-    })
-      .then((res) => this._getResponse(res))
-      .catch((err) => {
-        console.log('Не удалось отправить карточку!=(');
-      });
+    }).then((res) => this._getResponse(res));
   }
 
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cohort-49/cards/${id}`, {
       method: 'DELETE',
       headers: this._headers,
-    })
-      .then((res) => this._getResponse(res))
-      .catch((err) => {
-        console.log('Не удалось удалить карточку!');
-      });
+    }).then((res) => this._getResponse(res));
   }
 
   putLikes(id) {
     return fetch(`${this._baseUrl}/cohort-49/cards/${id}/likes`, {
       method: 'PUT',
       headers: this._headers,
-    })
-      .then((res) => this._getResponse(res))
-      .catch((err) => {
-        console.log('Не удалось поставить лайк!');
-      });
+    }).then((res) => this._getResponse(res));
   }
 
   deleteLikes(id) {
     return fetch(`${this._baseUrl}/cohort-49/cards/${id}/likes`, {
       method: 'DELETE',
       headers: this._headers,
-    })
-      .then((res) => this._getResponse(res))
-      .catch((err) => {
-        console.log('Не удалось убрать лайк!');
-      });
+    }).then((res) => this._getResponse(res));
   }
 
   _getResponse(res) {
